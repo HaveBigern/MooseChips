@@ -1,0 +1,163 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "distanceTravelled",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "timeElapsed",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "speedLimit",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "speed",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "longAccelThrottle",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "longAccelBrake",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 7,
+            "fieldName": "crashCount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 8,
+            "fieldName": "steeringRate",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 9,
+            "fieldName": "collisionTimeSameDir",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 10,
+            "fieldName": "distanceSameDir",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 11,
+            "fieldName": "collisionOppDir",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 12,
+            "fieldName": "distanceOppDir",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 13,
+            "fieldName": "longitudeAccel",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 14,
+            "fieldName": "lateralAccel",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 15,
+            "fieldName": "speedLimitFtSec",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 16,
+            "fieldName": "longitudeVelocity",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 17,
+            "fieldName": "lateralVelocity",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 18,
+            "fieldName": "lateralLanePosition",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 19,
+            "fieldName": "vehicleCurvature",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 20,
+            "fieldName": "roadCurvature",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 21,
+            "fieldName": "steeringCount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 22,
+            "fieldName": "throttleCount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 23,
+            "fieldName": "brakingCount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 24,
+            "fieldName": "gear",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 25,
+            "fieldName": "trafficLightState",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 26,
+            "fieldName": "yawRate",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 27,
+            "fieldName": "operatorMarker",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 28,
+            "fieldName": "totalPitchingAngle",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 29,
+            "fieldName": "totalRollingAngle",
+            "fieldType": "Double"
+        },
+        {
+            "fieldId": 30,
+            "fieldName": "routeName",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 31,
+            "fieldName": "dataUser",
+            "fieldType": "DataUser"
+        }
+    ],
+    "changelogDate": "20151123010319",
+    "dto": "no",
+    "pagination": "no"
+}

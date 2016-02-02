@@ -1,0 +1,48 @@
+<div>
+    <h2>DataUsers</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="dataUser.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new DataUser</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ParticipantNum</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="dataUser in dataUsers track by dataUser.id">
+                    <td><a ui-sref="dataUser.detail({id:dataUser.id})">{{dataUser.id}}</a></td>
+                    <td>{{dataUser.participantNum}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="dataUser.detail({id:dataUser.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="dataUser.edit({id:dataUser.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="dataUser.delete({id:dataUser.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

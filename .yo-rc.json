@@ -1,0 +1,24 @@
+{
+  "generator-jhipster": {
+    "baseName": "analyser",
+    "packageName": "com.strath.visu",
+    "packageFolder": "com/strath/visu",
+    "authenticationType": "session",
+    "hibernateCache": "no",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": "no",
+    "useSass": true,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "enableTranslation": false,
+    "enableSocialSignIn": false,
+    "rememberMeKey": "d17913f3fa9490f0d4b42cb1e146b01dd5f6f52b",
+    "testFrameworks": [
+      "gatling"
+    ]
+  }
+}

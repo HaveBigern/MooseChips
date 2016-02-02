@@ -1,0 +1,106 @@
+<div>
+    <h2>DataClasss</h2>
+    <jh-alert></jh-alert>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" ui-sref="dataClass.new">
+                    <span class="glyphicon glyphicon-flash"></span> <span>Create a new DataClass</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>DistanceTravelled</th>
+                    <th>TimeElapsed</th>
+                    <th>SpeedLimit</th>
+                    <th>Speed</th>
+                    <th>LongAccelThrottle</th>
+                    <th>LongAccelBrake</th>
+                    <th>CrashCount</th>
+                    <th>SteeringRate</th>
+                    <th>CollisionTimeSameDir</th>
+                    <th>DistanceSameDir</th>
+                    <th>CollisionOppDir</th>
+                    <th>DistanceOppDir</th>
+                    <th>LongitudeAccel</th>
+                    <th>LateralAccel</th>
+                    <th>SpeedLimitFtSec</th>
+                    <th>LongitudeVelocity</th>
+                    <th>LateralVelocity</th>
+                    <th>LateralLanePosition</th>
+                    <th>VehicleCurvature</th>
+                    <th>RoadCurvature</th>
+                    <th>SteeringCount</th>
+                    <th>ThrottleCount</th>
+                    <th>BrakingCount</th>
+                    <th>Gear</th>
+                    <th>TrafficLightState</th>
+                    <th>YawRate</th>
+                    <th>OperatorMarker</th>
+                    <th>TotalPitchingAngle</th>
+                    <th>TotalRollingAngle</th>
+                    <th>RouteName</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="dataClass in dataClasss track by dataClass.id">
+                    <td><a ui-sref="dataClass.detail({id:dataClass.id})">{{dataClass.id}}</a></td>
+                    <td>{{dataClass.distanceTravelled}}</td>
+                    <td>{{dataClass.timeElapsed}}</td>
+                    <td>{{dataClass.speedLimit}}</td>
+                    <td>{{dataClass.speed}}</td>
+                    <td>{{dataClass.longAccelThrottle}}</td>
+                    <td>{{dataClass.longAccelBrake}}</td>
+                    <td>{{dataClass.crashCount}}</td>
+                    <td>{{dataClass.steeringRate}}</td>
+                    <td>{{dataClass.collisionTimeSameDir}}</td>
+                    <td>{{dataClass.distanceSameDir}}</td>
+                    <td>{{dataClass.collisionOppDir}}</td>
+                    <td>{{dataClass.distanceOppDir}}</td>
+                    <td>{{dataClass.longitudeAccel}}</td>
+                    <td>{{dataClass.lateralAccel}}</td>
+                    <td>{{dataClass.speedLimitFtSec}}</td>
+                    <td>{{dataClass.longitudeVelocity}}</td>
+                    <td>{{dataClass.lateralVelocity}}</td>
+                    <td>{{dataClass.lateralLanePosition}}</td>
+                    <td>{{dataClass.vehicleCurvature}}</td>
+                    <td>{{dataClass.roadCurvature}}</td>
+                    <td>{{dataClass.steeringCount}}</td>
+                    <td>{{dataClass.throttleCount}}</td>
+                    <td>{{dataClass.brakingCount}}</td>
+                    <td>{{dataClass.gear}}</td>
+                    <td>{{dataClass.trafficLightState}}</td>
+                    <td>{{dataClass.yawRate}}</td>
+                    <td>{{dataClass.operatorMarker}}</td>
+                    <td>{{dataClass.totalPitchingAngle}}</td>
+                    <td>{{dataClass.totalRollingAngle}}</td>
+                    <td>{{dataClass.routeName}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="dataClass.detail({id:dataClass.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span> View</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="dataClass.edit({id:dataClass.id})"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ui-sref="dataClass.delete({id:dataClass.id})"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div ng-cloak>
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="page-header">
+				Route View <small>Graphs</small> <button class="btn btn-primary pull-right" ng-click="!sidebar.show">View Controls</button>
+			</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div ng-class="{'col-md-8': sidebar.show, 'col-md-12': !sidebar.show}">
+			<nvd3 options="options" data="data" api="api" config="{deepWatchDataDepth: 0}"></nvd3>
+		</div>
+		<div class="col-md-4" ng-if="sidebar.show">
+			<div class="graphControls">
+				<uib-tabset>
+    				<uib-tab heading="Basic">
+    					<div class="row">
+    						Test
+    					</div>
+    				</uib-tab>
+    			</uib-tabset>
+			</div>
+		</div>
+	</div>
+</div>

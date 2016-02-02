@@ -1,0 +1,22 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "dataClass",
+            "otherEntityName": "dataClass",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "dataUser"
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "participantNum",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        }
+    ],
+    "changelogDate": "20151129181059",
+    "dto": "no",
+    "pagination": "no"
+}

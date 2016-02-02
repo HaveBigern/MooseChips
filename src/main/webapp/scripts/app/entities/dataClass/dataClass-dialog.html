@@ -1,0 +1,206 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myDataClassLabel">Create or edit a DataClass</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="dataClass.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_distanceTravelled">DistanceTravelled</label>
+            <input type="number" class="form-control" name="distanceTravelled" id="field_distanceTravelled"
+                    ng-model="dataClass.distanceTravelled"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_timeElapsed">TimeElapsed</label>
+            <input type="number" class="form-control" name="timeElapsed" id="field_timeElapsed"
+                    ng-model="dataClass.timeElapsed"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_speedLimit">SpeedLimit</label>
+            <input type="number" class="form-control" name="speedLimit" id="field_speedLimit"
+                    ng-model="dataClass.speedLimit"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_speed">Speed</label>
+            <input type="number" class="form-control" name="speed" id="field_speed"
+                    ng-model="dataClass.speed"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_longAccelThrottle">LongAccelThrottle</label>
+            <input type="number" class="form-control" name="longAccelThrottle" id="field_longAccelThrottle"
+                    ng-model="dataClass.longAccelThrottle"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_longAccelBrake">LongAccelBrake</label>
+            <input type="number" class="form-control" name="longAccelBrake" id="field_longAccelBrake"
+                    ng-model="dataClass.longAccelBrake"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_crashCount">CrashCount</label>
+            <input type="number" class="form-control" name="crashCount" id="field_crashCount"
+                    ng-model="dataClass.crashCount"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_steeringRate">SteeringRate</label>
+            <input type="number" class="form-control" name="steeringRate" id="field_steeringRate"
+                    ng-model="dataClass.steeringRate"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_collisionTimeSameDir">CollisionTimeSameDir</label>
+            <input type="number" class="form-control" name="collisionTimeSameDir" id="field_collisionTimeSameDir"
+                    ng-model="dataClass.collisionTimeSameDir"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_distanceSameDir">DistanceSameDir</label>
+            <input type="number" class="form-control" name="distanceSameDir" id="field_distanceSameDir"
+                    ng-model="dataClass.distanceSameDir"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_collisionOppDir">CollisionOppDir</label>
+            <input type="number" class="form-control" name="collisionOppDir" id="field_collisionOppDir"
+                    ng-model="dataClass.collisionOppDir"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_distanceOppDir">DistanceOppDir</label>
+            <input type="number" class="form-control" name="distanceOppDir" id="field_distanceOppDir"
+                    ng-model="dataClass.distanceOppDir"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_longitudeAccel">LongitudeAccel</label>
+            <input type="number" class="form-control" name="longitudeAccel" id="field_longitudeAccel"
+                    ng-model="dataClass.longitudeAccel"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_lateralAccel">LateralAccel</label>
+            <input type="number" class="form-control" name="lateralAccel" id="field_lateralAccel"
+                    ng-model="dataClass.lateralAccel"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_speedLimitFtSec">SpeedLimitFtSec</label>
+            <input type="number" class="form-control" name="speedLimitFtSec" id="field_speedLimitFtSec"
+                    ng-model="dataClass.speedLimitFtSec"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_longitudeVelocity">LongitudeVelocity</label>
+            <input type="number" class="form-control" name="longitudeVelocity" id="field_longitudeVelocity"
+                    ng-model="dataClass.longitudeVelocity"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_lateralVelocity">LateralVelocity</label>
+            <input type="number" class="form-control" name="lateralVelocity" id="field_lateralVelocity"
+                    ng-model="dataClass.lateralVelocity"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_lateralLanePosition">LateralLanePosition</label>
+            <input type="number" class="form-control" name="lateralLanePosition" id="field_lateralLanePosition"
+                    ng-model="dataClass.lateralLanePosition"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_vehicleCurvature">VehicleCurvature</label>
+            <input type="number" class="form-control" name="vehicleCurvature" id="field_vehicleCurvature"
+                    ng-model="dataClass.vehicleCurvature"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_roadCurvature">RoadCurvature</label>
+            <input type="number" class="form-control" name="roadCurvature" id="field_roadCurvature"
+                    ng-model="dataClass.roadCurvature"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_steeringCount">SteeringCount</label>
+            <input type="number" class="form-control" name="steeringCount" id="field_steeringCount"
+                    ng-model="dataClass.steeringCount"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_throttleCount">ThrottleCount</label>
+            <input type="number" class="form-control" name="throttleCount" id="field_throttleCount"
+                    ng-model="dataClass.throttleCount"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_brakingCount">BrakingCount</label>
+            <input type="number" class="form-control" name="brakingCount" id="field_brakingCount"
+                    ng-model="dataClass.brakingCount"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_gear">Gear</label>
+            <input type="number" class="form-control" name="gear" id="field_gear"
+                    ng-model="dataClass.gear"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_trafficLightState">TrafficLightState</label>
+            <input type="number" class="form-control" name="trafficLightState" id="field_trafficLightState"
+                    ng-model="dataClass.trafficLightState"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_yawRate">YawRate</label>
+            <input type="number" class="form-control" name="yawRate" id="field_yawRate"
+                    ng-model="dataClass.yawRate"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_operatorMarker">OperatorMarker</label>
+            <input type="number" class="form-control" name="operatorMarker" id="field_operatorMarker"
+                    ng-model="dataClass.operatorMarker"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_totalPitchingAngle">TotalPitchingAngle</label>
+            <input type="number" class="form-control" name="totalPitchingAngle" id="field_totalPitchingAngle"
+                    ng-model="dataClass.totalPitchingAngle"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_totalRollingAngle">TotalRollingAngle</label>
+            <input type="number" class="form-control" name="totalRollingAngle" id="field_totalRollingAngle"
+                    ng-model="dataClass.totalRollingAngle"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_routeName">RouteName</label>
+            <input type="text" class="form-control" name="routeName" id="field_routeName"
+                    ng-model="dataClass.routeName"
+                     />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

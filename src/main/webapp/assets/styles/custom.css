@@ -1,0 +1,106 @@
+.centered {
+	text-align: -moz-center;
+}
+
+.uploadContainer {
+	border: 1px solid #ccc;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	background: #fff;
+	padding: 25px;
+}
+
+html,body { 
+	height:100%;
+	overflow:hidden;
+}
+
+#page-wrapper {
+	height: 1000px;
+	padding:20px;
+}
+
+.panelText {
+	padding-top:30px;
+}
+
+.panel-text {
+	font-size: 35px;
+	padding-top: 15px;	
+}
+
+.upload-btn {
+	border-top-left-radius:0;
+	border-top-right-radius:0;
+	font-size: 22px;
+}
+
+.customIcon {
+	height:70px;
+	max-width:120px;
+	background-image: url("../images/multiple.png");
+	background-size: 120px 65px;
+	background-repeat: no-repeat;
+}
+
+.selectPanel {
+	padding:20px;
+	color:#fff;
+	cursor-style:pointer;
+}
+
+.selectText {
+    font-size: 20px;
+}
+
+.panel-green.selectPanel:hover, .panel-green.multiPanel:hover {
+	cursor-style:pointer;
+	background-color:#3d8b3d;
+}
+
+.panel-primary.selectPanel:hover, .panel-primary.multiPanel:hover {
+	background-color:#2c689c;
+	cursor-style:pointer;
+}
+
+.panel-red.selectPanel:hover, .panel-red.multiPanel:hover {
+	background-color:#b52b27;
+	cursor-style:pointer;
+}
+
+.panel-yellow.selectPanel:hover, .panel-yellow.multiPanel:hover {
+	background-color:#df8a13;
+	cursor-style:pointer;
+}
+
+.multiPanel {
+	height:160px;
+	color:white;
+}
+
+.multiIcon {
+	margin:30px;
+}
+
+.containerPanel {
+	border: 1px solid #ccc;
+	padding: 10px;
+	overflow: auto;
+	border-radius: 5px;
+}
+
+.multiSelected {
+/* 	-webkit-box-shadow: 0px 0px 0px 4px rgba(55,166,38,1); */
+/* 	-moz-box-shadow: 0px 0px 0px 4px rgba(55,166,38,1); */
+/* 	box-shadow: 0px 0px 0px 4px rgba(55,166,38,1); */
+}
+
+.multiOr {
+	margin-top:200px;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.btn-multiGo {
+	width:100%;
+}
