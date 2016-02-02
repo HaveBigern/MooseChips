@@ -20,10 +20,10 @@ spring:
             enabled: false
     datasource:
         driver-class-name: org.postgresql.ds.PGSimpleDataSource
-        url: jdbc:postgresql://localhost:5432/postgres
+        url: jdbc:postgres://olnynvxgyambux:qAHSV_pJEXdzDZR-VvOJ0qof10@ec2-54-247-167-90.eu-west-1.compute.amazonaws.com:5432/d7bvgpn7a8peua
         name:
-        username: postgres
-        password: doom44
+        username: olnynvxgyambux
+        password: qAHSV_pJEXdzDZR-VvOJ0qof10
     jpa:
         database-platform: com.strath.visu.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL

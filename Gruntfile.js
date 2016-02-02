@@ -60,23 +60,6 @@ module.exports = function (grunt) {
                     'bower_components/bootstrap/' // Exclude Bootstrap LESS as we use bootstrap-sass
                 ],
                 ignorePath: /\.\.\/webapp\/bower_components\// // remove ../webapp/bower_components/ from paths of injected sass files 
-            },
-            test: {
-                src: 'src/test/javascript/karma.conf.js',
-                exclude: [/angular-i18n/, /angular-scenario/],
-                ignorePath: /\.\.\/\.\.\//, // remove ../../ from paths of injected javascripts
-                devDependencies: true,
-                fileTypes: {
-                    js: {
-                        block: /(([\s\t]*)\/\/\s*bower:*(\S*))(\n|\r|.)*?(\/\/\s*endbower)/gi,
-                        detect: {
-                            js: /'(.*\.js)'/gi
-                        },
-                        replace: {
-                            js: '\'{{filePath}}\','
-                        }
-                    }
-                }
             }
         },
         browserSync: {
@@ -375,10 +358,8 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', [
         'clean:server',
-        'wiredep:test',
         'ngconstant:dev',
-        'sass:server',
-        'karma'
+        'sass:server'
     ]);
 
     grunt.registerTask('build', [
@@ -403,13 +384,11 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('buildOpenshift', [
-        'test',
         'build',
         'copy:generateOpenshiftDirectory',
     ]);
 
     grunt.registerTask('deployOpenshift', [
-        'test',
         'build',
         'copy:generateOpenshiftDirectory',
         'buildcontrol:openshift'
