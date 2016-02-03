@@ -17,7 +17,7 @@ public class HerokuDatabaseConfiguration {
     private final Logger log = LoggerFactory.getLogger(HerokuDatabaseConfiguration.class);
 
     @Bean
-    public DataSource dataSource(DataSourceProperties dataSourceProperties) {
+    public DataSource dataSource(DataSourceProperties dataSourceProperties, JHipsterProperties jHipsterProperties) {
         log.debug("Configuring Heroku Datasource");
 
         String herokuUrl = System.getenv("JDBC_DATABASE_URL");
@@ -26,6 +26,9 @@ public class HerokuDatabaseConfiguration {
 
 	    //MySQL optimizations, see https://github.com/brettwooldridge/HikariCP/wiki/MySQL-Configuration
 	    if ("com.mysql.jdbc.jdbc2.optional.MysqlDataSource".equals(dataSourceProperties.getDriverClassName())) {
+                config.addDataSourceProperty("cachePrepStmts", jHipsterProperties.getDatasource().isCachePrepStmts());
+                config.addDataSourceProperty("prepStmtCacheSize", jHipsterProperties.getDatasource().getPrepStmtCacheSize());
+                config.addDataSourceProperty("prepStmtCacheSqlLimit", jHipsterProperties.getDatasource().getPrepStmtCacheSqlLimit());
             }
 
             config.setDataSourceClassName(dataSourceProperties.getDriverClassName());
