@@ -20,10 +20,10 @@ spring:
             enabled: false
     datasource:
         driver-class-name: org.postgresql.ds.PGSimpleDataSource
-        url: jdbc:postgres://olnynvxgyambux:qAHSV_pJEXdzDZR-VvOJ0qof10@ec2-54-247-167-90.eu-west-1.compute.amazonaws.com:5432/d7bvgpn7a8peua
+        url: jdbc:postgres://doqaertxogrtxg:Da46n0oG0RhZv30wJpJkIZC_bz@ec2-54-217-240-205.eu-west-1.compute.amazonaws.com:5432/d7r7ml6kql6r7r
         name:
-        username: olnynvxgyambux
-        password: qAHSV_pJEXdzDZR-VvOJ0qof10
+        username: doqaertxogrtxg
+        password: Da46n0oG0RhZv30wJpJkIZC_bz
     jpa:
         database-platform: com.strath.visu.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
@@ -33,10 +33,10 @@ spring:
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: false
     mail:
-        host: localhost
-        port: 25
-        username:
-        password:
+        host: smtp.mandrillapp.com
+        port: 587
+        username: havebigern@gmail.com
+        password: bS859I9VtKzYUsZXQrB9rw
     thymeleaf:
         cache: true
 

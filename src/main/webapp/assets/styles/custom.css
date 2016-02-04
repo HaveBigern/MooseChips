@@ -63,6 +63,10 @@ html,body {
 	cursor-style:pointer;
 }
 
+.panel-primary {
+	background-color: #337AB7;
+}
+
 .panel-red.selectPanel:hover, .panel-red.multiPanel:hover {
 	background-color:#b52b27;
 	cursor-style:pointer;

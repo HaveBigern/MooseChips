@@ -76,9 +76,10 @@ angular.module('analyserApp').controller('RouteListController', function ($scope
         }
         
         function setControlRoutes() {
+        	console.log($scope.controlRoutes);
         	_.each($scope.routes, function(route) {
         		_.each($scope.controlRoutes, function(controlRoute) {
-	        		if(controlRoute.dataUser.dataUserId == route.dataUser.dataUserId) {
+	        		if(controlRoute.dataUser && route.dataUser && controlRoute.dataUser.dataUserId == route.dataUser.dataUserId) {
 	        			route.controlRoute = controlRoute;
 	        		}
         		});
@@ -100,7 +101,7 @@ angular.module('analyserApp').controller('RouteListController', function ($scope
         }
         
         function removeControl() {
-        	$scope.routes = $scope.routes.filter(function(route) { return route.type !== 4; });
+        	$scope.routes = $scope.routes.filter(function(route) { return route.type < 4; });
         }
      
     });

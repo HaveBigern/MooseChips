@@ -33,7 +33,10 @@ spring:
             hibernate.cache.use_query_cache: false
             hibernate.generate_statistics: false
     mail:
-        host: localhost
+        host: smtp.mandrillapp.com
+        port: 587
+        username: havebigern@gmail.com
+        password: bS859I9VtKzYUsZXQrB9rw
     messages:
         cache-seconds: 1
     thymeleaf:

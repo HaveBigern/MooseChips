@@ -20,7 +20,6 @@ angular.module('analyserApp').controller('RouteViewController',
 	 		        }).$promise.then(function() {
 	 		        	formatData(controlData, "control");
 	 		        	$scope.api.update();
-	 		        	console.log($scope.data);
 	 		        });
 	            });
 	        	
