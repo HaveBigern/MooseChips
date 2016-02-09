@@ -2,11 +2,276 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<h1 class="page-header">
-				Route Comparisons <small>Select Route(s) to View Data</small>
+				Route Comparisons <small>Average Data Comparisons</small>
 			</h1>
 		</div>
 	</div>
 	<div class="row">
 		<nvd3 options="options" data="data" api="api" config="{deepWatchDataDepth: 0}"></nvd3>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="controls">
+				<div class="controls-header">
+					Change X-Axis
+				</div>
+				<div class="control-body">
+					<div class="col-md-6">
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="distanceTravelled">
+						    Distance Travelled
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="timeElapsed">
+						    Time Elapsed
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="speedLimit">
+						    Speed Limit
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="speed">
+						    Speed
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="longAccelThrottle">
+						    Long Accel Due to Throttle
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="longAccelBrake">
+						    Long Accel Due to Brake
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="crashCount">
+						    Crash Count
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="steeringRate">
+						    Steering Rate
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="collisionTimeSameDir">
+						    Min Time to Collision Same Direction
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="distanceSameDir">
+						    Min Distance to Vehicles Same Direction
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="collisionOppDir">
+						    Min Time to Collision Same Direction
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="distanceOppDir">
+						    Min Distance to Vehicles Opposite Direction
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="longitudeAccel">
+						    Longitudinal Acceleration
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="lateralAccel">
+						    Lateral Acceleration
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="speedLimitFtSec">
+						    Speed Limit (ft/sec)
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="longitudeVelocity">
+						    Longitude Velocity
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="lateralVelocity">
+						    Lateral Velocity
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="lateralLanePosition">
+						    Lateral Lane Position
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="vehicleCurvature">
+						    Vehicle Curvature
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="roadCurvature">
+						    Road Curvature
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="steeringCount">
+						    Steering Count
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="throttleCount">
+						    Throttle Count
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="brakingCount">
+						    Braking Count
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="gear">
+						    Gear
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="trafficLightState">
+						    Traffic Light State
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="yawRate">
+						    Yaw rate
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="operatorMarker">
+						    Operator Marker
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="totalPitchingAngle">
+						    Total Pitching Angle
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="xType" value="totalRollingAngle">
+						    Total Rolling Angle
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="controls">
+				<div class="controls-header">
+					Change Y-Axis
+				</div>
+				<div class="control-body">
+					<div class="col-md-6">
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="distanceTravelled">
+						    Distance Travelled
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="timeElapsed">
+						    Time Elapsed
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="speedLimit">
+						    Speed Limit
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="speed">
+						    Speed
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="longAccelThrottle">
+						    Long Accel Due to Throttle
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="longAccelBrake">
+						    Long Accel Due to Brake
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="crashCount">
+						    Crash Count
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="steeringRate">
+						    Steering Rate
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="collisionTimeSameDir">
+						    Min Time to Collision Same Direction
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="distanceSameDir">
+						    Min Distance to Vehicles Same Direction
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="collisionOppDir">
+						    Min Time to Collision Same Direction
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="distanceOppDir">
+						    Min Distance to Vehicles Opposite Direction
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="longitudeAccel">
+						    Longitudinal Acceleration
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="lateralAccel">
+						    Lateral Acceleration
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="speedLimitFtSec">
+						    Speed Limit (ft/sec)
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="longitudeVelocity">
+						    Longitude Velocity
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="lateralVelocity">
+						    Lateral Velocity
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="lateralLanePosition">
+						    Lateral Lane Position
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="vehicleCurvature">
+						    Vehicle Curvature
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="roadCurvature">
+						    Road Curvature
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="steeringCount">
+						    Steering Count
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="throttleCount">
+						    Throttle Count
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="brakingCount">
+						    Braking Count
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="gear">
+						    Gear
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="trafficLightState">
+						    Traffic Light State
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="yawRate">
+						    Yaw rate
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="operatorMarker">
+						    Operator Marker
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="totalPitchingAngle">
+						    Total Pitching Angle
+						</div>
+						<div class="col-md-12">
+						    <input type="radio" ng-model="yType" value="totalRollingAngle">
+						    Total Rolling Angle
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<button class="btn btn-primary btn-multiGo" ng-click="changeData()">Update</button>
+		</div>
 	</div>
 </div>

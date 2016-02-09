@@ -23,11 +23,15 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 				});
 				
 			});
-		}
-		
-		$scope.xType = "distanceTravelled";
-		$scope.yType = "speed";
+		};
 	
+		$scope.xType = "timeElapsed";
+		$scope.yType = "speed";
+		
+		$scope.changeData = function() {
+			$scope.api.update();
+		};
+		
 		$scope.options = {
 			chart : {
 				type : 'lineChart',
@@ -38,14 +42,17 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 					bottom : 60,
 					left : 65
 				},
-				x : function(d) { return d.x; },
-				y : function(d) { return d.y; },
+				x : function(d) { return d[$scope.xType]; },
+				y : function(d) { return d[$scope.yType]; },
 				color : d3.scale.category10().range(),
 				transitionDuration: 300, 
 				useInteractiveGuideline: true,
 				xAxis : {
 					axisLabel: 'Distance Travelled',
-					showMaxMin: false
+					tickFormat: function(d){
+                        return d3.format('.02f')(d);
+                    },
+                    showMaxMin: false
 				},
 				yAxis : {
 					axisLabel : 'Speed',
@@ -61,7 +68,6 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 	
 		function formatData(array, typeString) {
 			var counter = 0;
-			var total = 0;
 			var data = {
 					values: [],
 					key: typeString
@@ -69,8 +75,38 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 			
 			_.each(array, function(entry) {
 				if(counter % 10 === 0) {
-					total += entry.speed;
-					data.values.push( {x: entry[$scope.xType], y: entry[$scope.yType]} );
+					data.values.push( 
+						{
+							distanceTravelled: entry.distanceTravelled,
+							timeElapsed: entry.timeElapsed,
+							speedLimit: entry.speedLimit,
+							speed: entry.speed,
+							longAccelThrottle: entry.longAccelThrottle,
+							longAccelBrake: entry.longAccelBrake,
+							crashCount: entry.crashCount,
+							steeringRate: entry.steeringRate,
+							collisionTimeSameDir: entry.collisionTimeSameDir,
+							distanceSameDir: entry.distanceSameDir,
+							collisionOppDir: entry.collisionOppDir,
+							distanceOppDir: entry.distanceOppDir,
+							longitudeAccel: entry.longitudeAccel,
+							lateralAccel: entry.lateralAccel,
+							speedLimitFtSec: entry.speedLimitFtSec,
+							longitudeVelocity: entry.longitudeVelocity,
+							lateralVelocity: entry.lateralVelocity,
+							lateralLanePosition: entry.lateralLanePosition,
+							vehicleCurvature: entry.vehicleCurvature,
+							roadCurvature: entry.roadCurvature,
+							steeringCount: entry.steeringCount,
+							throttleCount: entry.throttleCount,
+							brakingCount: entry.brakingCount,
+							gear: entry.gear,
+							trafficLightState: entry.trafficLightState,
+							yawRate: entry.yawRate,
+							operatorMarker: entry.operatorMarker,
+							totalPitchingAngle: entry.totalPitchingAngle,
+							totalRollingAngle: entry.totalRollingAngle
+						});
 				}
 				counter++;
         	});
@@ -79,11 +115,11 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 		}
 	
 		function sortFunction(a, b) {
-		    if (a.x === b.x) {
+		    if (a[$scope.xType] === b[$scope.xType]) {
 		        return 0;
 		    }
 		    else {
-		        return (a.x < b.x) ? -1 : 1;
+		        return (a[$scope.xType] < b[$scope.xType]) ? -1 : 1;
 		    }
 		}
 });

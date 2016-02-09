@@ -45,6 +45,7 @@ angular.module('analyserApp').controller('RouteListController', function ($scope
         };
         
         $scope.toggleSelect = function(route, select) {
+        	console.log($scope.multiSelected);
         	if(_.contains($scope.multiSelected, route)) {
         		$scope.multiSelected = _.without($scope.multiSelected, _.findWhere($scope.multiSelected, route));
         	} else {
@@ -100,8 +101,8 @@ angular.module('analyserApp').controller('RouteListController', function ($scope
         	});
         }
         
-        function removeControl() {
-        	$scope.routes = $scope.routes.filter(function(route) { return route.type < 4; });
-        }
+//        function removeControl() {
+//        	$scope.routes = $scope.routes.filter(function(route) { return route.type < 4; });
+//        }
      
     });
