@@ -20,12 +20,13 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 				}).$promise.then(function() {
 					formatData(route.dataClasses, route.typeString);
 					$scope.api.update();
+					
 				});
 				
 			});
 		};
 	
-		$scope.xType = "timeElapsed";
+		$scope.xType = "distanceTravelled";
 		$scope.yType = "speed";
 		
 		$scope.changeData = function() {
@@ -34,7 +35,7 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 		
 		$scope.options = {
 			chart : {
-				type : 'lineChart',
+				type : 'lineWithFocusChart',
 				height : 450,
 				margin : {
 					top : 20,
@@ -48,7 +49,7 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 				transitionDuration: 300, 
 				useInteractiveGuideline: true,
 				xAxis : {
-					axisLabel: 'Distance Travelled',
+					axisLabel: 'distanceTravelled',
 					tickFormat: function(d){
                         return d3.format('.02f')(d);
                     },
@@ -72,7 +73,6 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 					values: [],
 					key: typeString
 			};
-			
 			_.each(array, function(entry) {
 				if(counter % 10 === 0) {
 					data.values.push( 
