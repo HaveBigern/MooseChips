@@ -388,15 +388,6 @@
                             <arguments>
                                 <argument>--spring.profiles.active=prod</argument>
                             </arguments>
-                            <jvmArguments>
-                            	-XX:+CMSClassUnloadingEnabled,
-                            	
-                            	
-                            	
-                            	
-                            	
-                            	 -XX:+CMSPermGenSweepingEnabled
-                            </jvmArguments>
                         </configuration>
                     </plugin>
                 </plugins>
