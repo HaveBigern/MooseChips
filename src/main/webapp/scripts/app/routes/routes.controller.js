@@ -101,8 +101,8 @@ angular.module('analyserApp').controller('RouteListController', function ($scope
         	});
         }
         
-//        function removeControl() {
-//        	$scope.routes = $scope.routes.filter(function(route) { return route.type < 4; });
-//        }
+        function removeControl() {
+        	$scope.routes = $scope.routes.filter(function(route) { return route.type < 4; });
+        }
      
     });

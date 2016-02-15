@@ -19,10 +19,11 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 					route.dataClasses = result;
 				}).$promise.then(function() {
 					formatData(route.dataClasses, route.typeString);
+					if(!_.contains($scope.data, barData)) {
+						$scope.data.push(barData);
+					}
 					$scope.api.update();
-					
 				});
-				
 			});
 		};
 	
@@ -113,7 +114,28 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 			data.values.sort(sortFunction);
 			$scope.data.push(data);
 		}
-	
+		
+		var barData = {
+				key: "Danger Zones",
+				values: [{distanceTravelled: 108.0, speed:0}, 
+				         {distanceTravelled: 5539.0, speed:0}, {distanceTravelled: 5540.0, speed:35},
+				         {distanceTravelled: 6450.0, speed:35}, {distanceTravelled: 6451.0, speed:0}, 
+				         {distanceTravelled: 15949.0, speed:0}, {distanceTravelled: 15950.0, speed:35},
+				         {distanceTravelled: 16950.0, speed:35}, {distanceTravelled: 16951.0, speed:0},
+				         {distanceTravelled: 24299.0, speed:0}, {distanceTravelled: 24300.0, speed:35},
+				         {distanceTravelled: 25300.0, speed:35}, {distanceTravelled: 25301.0, speed:0},
+				         {distanceTravelled: 33949.0, speed:0}, {distanceTravelled: 33950.0, speed:35},
+				         {distanceTravelled: 34950.0, speed:35}, {distanceTravelled: 34951.0, speed:0},
+				         {distanceTravelled: 41539.0, speed:0}, {distanceTravelled: 41540.0, speed:35},
+				         {distanceTravelled: 42540.0, speed:35}, {distanceTravelled: 42541.0, speed:0},
+				         {distanceTravelled: 49739.0, speed:0}, {distanceTravelled: 49740.0, speed:35},
+				         {distanceTravelled: 50740.0, speed:35}, {distanceTravelled: 50741.0, speed:0}, 
+				         {distanceTravelled: 55299.0, speed:0}, {distanceTravelled: 55300.0, speed:35},
+				         {distanceTravelled: 56300.0, speed:35}, {distanceTravelled: 56301.0, speed:0}, 
+				         {distanceTravelled: 62739.0, speed:0}, {distanceTravelled: 62740.0, speed:35},
+				         {distanceTravelled: 63740.0, speed:35}, {distanceTravelled: 63741.0, speed:0}]
+		};
+		
 		function sortFunction(a, b) {
 		    if (a[$scope.xType] === b[$scope.xType]) {
 		        return 0;
