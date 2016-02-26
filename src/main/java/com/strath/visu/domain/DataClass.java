@@ -112,6 +112,9 @@ public class DataClass implements Serializable {
 	@JoinColumn(name = "route_id")
 	private Route route;
 
+	@Transient
+	private int numberOfClasses;
+
 	public void setParent(Route route) {
 		this.route = route;
 	}
@@ -398,5 +401,13 @@ public class DataClass implements Serializable {
 				+ trafficLightState + "'" + ", yawRate='" + yawRate + "'" + ", operatorMarker='" + operatorMarker + "'"
 				+ ", totalPitchingAngle='" + totalPitchingAngle + "'" + ", totalRollingAngle='" + totalRollingAngle
 				+ "'" + '}';
+	}
+
+	public int getNumberOfClasses() {
+		return numberOfClasses;	
+	}
+	
+	public void setNumberOfClasses(int i) {
+		this.numberOfClasses = i;	
 	}
 }

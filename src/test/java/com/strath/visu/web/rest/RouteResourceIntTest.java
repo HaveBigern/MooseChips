@@ -102,23 +102,9 @@ public class RouteResourceIntTest {
         restRouteMockMvc.perform(get("/api/routes"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[*].id").value(hasItem(route.getRouteId().intValue())))
                 .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
     }
 
-    @Test
-    @Transactional
-    public void getRoute() throws Exception {
-        // Initialize the database
-        routeRepository.saveAndFlush(route);
-
-        // Get the route
-        restRouteMockMvc.perform(get("/api/routes/{id}", route.getRouteId()))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$.id").value(route.getRouteId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
-    }
 
     @Test
     @Transactional
@@ -151,21 +137,4 @@ public class RouteResourceIntTest {
         assertThat(testRoute.getName()).isEqualTo(UPDATED_NAME);
     }
 
-    @Test
-    @Transactional
-    public void deleteRoute() throws Exception {
-        // Initialize the database
-        routeRepository.saveAndFlush(route);
-
-		int databaseSizeBeforeDelete = routeRepository.findAll().size();
-
-        // Get the route
-        restRouteMockMvc.perform(delete("/api/routes/{id}", route.getRouteId())
-                .accept(TestUtil.APPLICATION_JSON_UTF8))
-                .andExpect(status().isOk());
-
-        // Validate the database is empty
-        List<Route> routes = routeRepository.findAll();
-        assertThat(routes).hasSize(databaseSizeBeforeDelete - 1);
-    }
 }

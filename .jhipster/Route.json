@@ -8,6 +8,13 @@
             "otherEntityField": "id"
         },
         {
+            "relationshipId": 3,
+            "relationshipName": "type",
+            "otherEntityName": "type",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
             "relationshipId": 2,
             "relationshipName": "dataClass",
             "otherEntityName": "dataClass",

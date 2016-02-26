@@ -75,16 +75,15 @@ public class RouteResource {
         produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Route> getAverageRoutes() {
         log.debug("REST request to get all Routes");
-        List<Route> routes = new ArrayList<>();
-        List<Route> control = routeRepository.getByExperimentType(5);
-        List<Route> audioMute = routeRepository.getByExperimentType(6);
-        List<Route> warningLights = routeRepository.getByExperimentType(7);
-        List<Route> audioWarning = routeRepository.getByExperimentType(8);
-        routes.addAll(control);
-        routes.addAll(audioMute);
-        routes.addAll(warningLights);
-        routes.addAll(audioWarning);
-        return routes;
+        List<Route> routes = routeRepository.findAll();
+        List<Route> finalRouteList = new ArrayList<>();
+		for(Route route : routes) {
+        	if(route.getAvgType() != null) {
+        		finalRouteList .add(route);
+        	}
+        }
+        
+        return finalRouteList;
     }
 
     /**

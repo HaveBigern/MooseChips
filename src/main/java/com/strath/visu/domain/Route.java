@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -32,20 +33,24 @@ public class Route implements Serializable {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-//	@Column(name = "route_id")
     private Long route_id;
 
     @Column(name = "name")
     private String name;
-
-    @Column(name = "type")
-    private Integer type;
+    
+    @ManyToOne
+    @JoinColumn(name = "type")
+    private Type type;
+    
+    @OneToOne
+    @JoinColumn(name = "average_of")
+    private Type avgType;
     
     @ManyToOne
     @JoinColumn(name = "data_user_id")
     private DataUser dataUser;
 
-    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<DataClass> dataClasses = new ArrayList<>();
 
@@ -81,16 +86,28 @@ public class Route implements Serializable {
         this.dataClasses = dataClasss;
     }
     
-    public Integer getType() {
+    public Type getType() {
 		return type;
 	}
 
-	public void setType(Integer type) {
+	public void setType(Type type) {
 		this.type = type;
+	}
+
+	public Type getAvgType() {
+		return avgType;
+	}
+
+	public void setAvgType(Type avgType) {
+		this.avgType = avgType;
 	}
 
 	public void addChild(DataClass dataClass) {
     	dataClass.setParent(this);
+    }
+	
+	public void addChildType(Type type) {
+		type.setAverageRoute(this);
     }
 
     @Override

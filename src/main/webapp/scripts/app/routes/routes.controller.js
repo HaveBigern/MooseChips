@@ -25,8 +25,6 @@ angular.module('analyserApp').controller('RouteListController', function ($scope
         $scope.loadAverageRoutes = function() {
         	AvgRoute.query(function(result) {
         		$scope.averageRoutes = result;
-        	}).$promise.then(function() {
-        		setAverages();
         	});
         }
         
@@ -44,40 +42,17 @@ angular.module('analyserApp').controller('RouteListController', function ($scope
         	}
         };
         
-        $scope.toggleSelect = function(route, select) {
-        	console.log($scope.multiSelected);
+        $scope.toggleSelect = function(route) {
         	if(_.contains($scope.multiSelected, route)) {
         		$scope.multiSelected = _.without($scope.multiSelected, _.findWhere($scope.multiSelected, route));
+        		route.selected = false;
         	} else {
         		$scope.multiSelected.push(route);
-        	}
-        	if(select == 1) {
-        		$scope.controlSelect = !$scope.controlSelect;
-        	} else if(select == 2) {
-        		$scope.audioMuteSelect = !$scope.audioMuteSelect;
-        	} else if(select == 3) {
-        		$scope.warningLightsSelect = !$scope.warningLightsSelect;
-        	} else if(select == 4) {
-        		$scope.audioWarningSelect = !$scope.audioWarningSelect;
+        		route.selected = true;
         	}
         };
-
-        function setAverages() {
-        	_.each($scope.averageRoutes, function(route) {
-        		if(route.type == 5) {
-        			$scope.controlAvg = route;
-        		} else if(route.type == 6) {
-        			$scope.audioMuteAvg = route;
-        		} else if(route.type == 7) {
-        			$scope.warningLightsAvg = route;
-        		} else if(route.type == 8) {
-        			$scope.audioWarningAvg = route;
-        		}
-        	});
-        }
         
         function setControlRoutes() {
-        	console.log($scope.controlRoutes);
         	_.each($scope.routes, function(route) {
         		_.each($scope.controlRoutes, function(controlRoute) {
 	        		if(controlRoute.dataUser && route.dataUser && controlRoute.dataUser.dataUserId == route.dataUser.dataUserId) {

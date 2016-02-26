@@ -6,27 +6,45 @@
 			</h1>
 		</div>
 	</div>
-	<div class="row" ng-if="step.select">
-		<div class="col-md-3 col-md-offset-3">
-			<div class="panel panel-primary centered selectPanel"
-				ng-click="nextStep('single')">
-				<div class="centered">
-					<span class="fa fa-5x fa-road"></span>
+	<div class="row" ng-if="step.select"> 
+		<div class="col-md-4 col-md-offset-2">
+			<div class="panel panel-standard centered" ng-click="nextStep('single')">
+				<div class="panel-heading">
+					<div class="row">
+						<i class="fa fa-road fa-5x"></i>
+					</div>
+					<div class="row">
+						<div class="selectText">View Single Routes</div>
+					</div>
 				</div>
-				<div class="row">
-					<div class="selectText">Single Route</div>
-				</div>
+				<a ng-click="nextStep('single')">
+					<div class="panel-footer">
+						<span class="pull-left">View Single Routes</span> <span
+							class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
+				</a>
 			</div>
 		</div>
-		<div class="col-md-3">
-			<div class="panel panel-green centered selectPanel"
-				ng-click="nextStep('multiple')">
-				<div class="centered">
-					<div class="customIcon"></div>
+		<div class="col-md-4">
+			<div class="panel panel-standard centered" ng-click="nextStep('multiple')">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="centered">
+							<div class="customIcon"></div>
+						</div>
+						<div class="row">
+							<div class="selectText">Compare Multiple Routes</div>
+						</div>
+					</div>
 				</div>
-				<div class="row">
-					<div class="selectText">Compare Multiple Routes</div>
-				</div>
+				<a ng-click="nextStep('multiple')">
+					<div class="panel-footer">
+						<span class="pull-left">View Multiple Routes</span> <span
+							class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
+				</a>
 			</div>
 		</div>
 	</div>
@@ -60,53 +78,17 @@
 		</div>
 	</div>
 	<div class="row" ng-if="step.multiple">
-		<div class="centered">
-			<div class="col-md-4 col-md-offset-2">
+			<div class="col-md-8 col-md-offset-2">
 				<div class="containerPanel">
 					<div class="panel-heading" style="font-size: 20px;">
 						Compare Experiment Type Averages
 					</div>
-					<div class="col-md-6" style="padding-top: 20px;">
-						<div class="panel panel-green centered multiPanel"
-							ng-click="toggleSelect(controlAvg, 1)" ng-class='{"multiSelected":controlSelect}'>
-							<div class="centered multiIcon">
-								<span class="fa fa-4x" ng-class='{"fa-sliders":!controlSelect, "fa-check":controlSelect}'></span>
-							</div>
-							<div class="row">
-								<div class="selectText">Control</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6" style="padding-top: 20px;">
-						<div class="panel panel-yellow centered multiPanel"
-							ng-click="toggleSelect(audioMuteAvg, 2)" ng-class='{"multiSelected":audioMuteSelect}'>
-							<div class="centered multiIcon">
-								<span class="fa fa-4x" ng-class='{"fa-volume-off":!audioMuteSelect, "fa-check":audioMuteSelect}'></span>
-							</div>
-							<div class="row">
-								<div class="selectText">Audio Mute</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="panel panel-primary centered multiPanel"
-							ng-click="toggleSelect(warningLightsAvg, 3)" ng-class='{"multiSelected":warningLightsSelect}'>
-							<div class="centered multiIcon">
-								<span class="fa fa-4x" ng-class='{"fa-lightbulb-o":!warningLightsSelect, "fa-check":warningLightsSelect}'></span>
-							</div>
-							<div class="row">
-								<div class="selectText">Warning Lights</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="panel panel-red centered multiPanel"
-							ng-click="toggleSelect(audioWarningAvg, 4)" ng-class='{"multiSelected":audioWarningSelect}'>
-							<div class="centered multiIcon">
-								<span class="fa fa-4x" ng-class='{"fa-music":!audioWarningSelect, "fa-check":audioWarningSelect}'></span>
-							</div>
-							<div class="row">
-								<div class="selectText">Audio Warning</div>
+					
+					<div ng-repeat="route in averageRoutes">
+						<div class="row" style="margin:0">
+							<div class="expRow" ng-click="toggleSelect(route)">
+								<span class="expFont">{{route.type.name}}</span>
+								<span class="fa fa-3x fa-check pull-right" ng-class='{"selectedExp":route.selected, "unselectedExp":!route.selected}'></span>
 							</div>
 						</div>
 					</div>
@@ -115,20 +97,5 @@
 					<button class="btn btn-success btn-multiGo" ui-sref="routes.multiview({routelist:multiSelected})">Go</button>
 				</div>
 			</div>
-			<div class="multiOr col-md-1">
-				<div>OR</div>
-			</div>
-			<div class="col-md-3">
-				<div class="panel panel-red centered selectPanel"
-						ng-click="nextStep('multiple')" style="margin-top:165px">
-					<div class="centered">
-						<span class="fa fa-3x fa-cog"></span>
-					</div>
-					<div class="row">
-						<div class="selectText">Create Custom Comparison</div>
-					</div>
-				</div>
-			</div>
 		</div>		
-	</div>
 </div>

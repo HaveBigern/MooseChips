@@ -20,10 +20,10 @@ spring:
             enabled: false
     datasource:
         driver-class-name: org.postgresql.ds.PGSimpleDataSource
-        url: jdbc:postgres://doqaertxogrtxg:Da46n0oG0RhZv30wJpJkIZC_bz@ec2-54-217-240-205.eu-west-1.compute.amazonaws.com:5432/d7r7ml6kql6r7r
+        url: jdbc:postgres://smaaijmvpseexp:aEX_GcFhtgZQUsLfHZCsuKXNCC@ec2-54-195-241-96.eu-west-1.compute.amazonaws.com:5432/d4inc6eoo028ok
         name:
-        username: doqaertxogrtxg
-        password: Da46n0oG0RhZv30wJpJkIZC_bz
+        username: smaaijmvpseexp
+        password: aEX_GcFhtgZQUsLfHZCsuKXNCC
     jpa:
         database-platform: com.strath.visu.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL

@@ -25,10 +25,7 @@ public class HerokuDatabaseConfiguration {
 	    HikariConfig config = new HikariConfig();
 
 	    //MySQL optimizations, see https://github.com/brettwooldridge/HikariCP/wiki/MySQL-Configuration
-	    if ("com.mysql.jdbc.jdbc2.optional.MysqlDataSource".equals(dataSourceProperties.getDriverClassName())) {
-
-            }
-
+	    if ("com.mysql.jdbc.jdbc2.optional.MysqlDataSource".equals(dataSourceProperties.getDriverClassName())) {}
             config.setDataSourceClassName(dataSourceProperties.getDriverClassName());
             config.addDataSourceProperty("url", herokuUrl);
             return new HikariDataSource(config);

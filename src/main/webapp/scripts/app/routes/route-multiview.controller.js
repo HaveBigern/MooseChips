@@ -6,19 +6,10 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 		$scope.data = [];
 		$scope.init = function() {
 			_.each($scope.routes, function(route) {
-				if(route.type == 5) {
-	    			route.typeString = "Control";
-	    		} else if(route.type == 6) {
-	    			route.typeString = "Audio Mute";
-	    		} else if(route.type == 7) {
-	    			route.typeString = "Warning Lights";
-	    		} else if(route.type == 8) {
-	    			route.typeString = "Audio Warning";
-	    		}
 				DataClassByRoute.query({routeId : route.routeId}, function(result) {
 					route.dataClasses = result;
 				}).$promise.then(function() {
-					formatData(route.dataClasses, route.typeString);
+					formatData(route.dataClasses, route.type.name);
 					if(!_.contains($scope.data, barData)) {
 						$scope.data.push(barData);
 					}
@@ -29,6 +20,8 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 	
 		$scope.xType = "distanceTravelled";
 		$scope.yType = "speed";
+		$scope.xLabel = "Distance Travelled";
+		$scope.yLabel = "Speed";
 		
 		$scope.changeData = function() {
 			$scope.api.update();
@@ -50,14 +43,14 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 				transitionDuration: 300, 
 				useInteractiveGuideline: true,
 				xAxis : {
-					axisLabel: 'distanceTravelled',
+					axisLabel: $scope.xLabel,
 					tickFormat: function(d){
                         return d3.format('.02f')(d);
                     },
                     showMaxMin: false
 				},
 				yAxis : {
-					axisLabel : 'Speed',
+					axisLabel : $scope.yLabel,
 					tickFormat: function(d){
                         return d3.format('.02f')(d);
                     },
@@ -68,6 +61,10 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 		
 		$scope.init();
 	
+		$scope.print = function() {
+			console.log($scope.xIsCollapsed);
+		};
+		
 		function formatData(array, typeString) {
 			var counter = 0;
 			var data = {
@@ -78,6 +75,7 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 				if(counter % 10 === 0) {
 					data.values.push( 
 						{
+							id: entry.id,
 							distanceTravelled: entry.distanceTravelled,
 							timeElapsed: entry.timeElapsed,
 							speedLimit: entry.speedLimit,
@@ -137,11 +135,11 @@ angular.module('analyserApp').controller('RouteMultiViewController',
 		};
 		
 		function sortFunction(a, b) {
-		    if (a[$scope.xType] === b[$scope.xType]) {
+		    if (a.distanceTravelled === b.distanceTravelled) {
 		        return 0;
 		    }
 		    else {
-		        return (a[$scope.xType] < b[$scope.xType]) ? -1 : 1;
+		        return (a.distanceTravelled < b.distanceTravelled) ? -1 : 1;
 		    }
 		}
 });

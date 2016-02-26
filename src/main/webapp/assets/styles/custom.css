@@ -1,5 +1,10 @@
+body {
+	
+}
+
 .centered {
 	text-align: -moz-center;
+	text-align: -webkit-center;
 }
 
 .uploadContainer {
@@ -130,4 +135,57 @@ html,body {
 
 .control-body {
     padding: 10px;
+    overflow:auto;
+}
+
+.panel-footer {
+	color:#080A4C;
+}
+
+.panel-standard {
+	border-color: #080A4C;
+    background-color: #080A4C;
+    color:#080A4C;
+    cursor:pointer;
+}
+
+.panel-standard > .panel-heading {
+	border-color: #080A4C;
+    color: #fff;
+    background-color: #080A4C;
+}
+
+#wrapper {
+    background-image: url("../images/curved-road.png");
+	background-size: cover;
+	height: 100%;
+}
+
+#page-wrapper {
+	background: initial;
+}
+
+.selectedExp {
+	color:#6CF229;
+}
+
+.unselectedExp {
+	color:#fff;
+}
+
+.expFont {
+	font-size: 20px;
+}
+
+.expRow {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #2C2C44;
+    color: #fff;
+    padding-bottom: 23px;
+}
+
+.graphPage {
+	background-image:0;
+	background: #fff;
 }

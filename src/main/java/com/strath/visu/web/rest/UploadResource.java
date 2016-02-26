@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.strath.visu.domain.DataUser;
 import com.strath.visu.domain.Route;
 import com.strath.visu.repository.DataUserRepository;
+import com.strath.visu.repository.TypeRepository;
 import com.strath.visu.service.ExcelConverterService;
 
 /**
@@ -37,6 +38,9 @@ public class UploadResource {
 
 	@Inject
 	private DataUserRepository dataUserRepo;
+	
+	@Inject
+	private TypeRepository typeRepository;
 
 	@RequestMapping(value = "/file", method = RequestMethod.POST)
 	public @ResponseBody ResponseEntity<Route> upload(@RequestParam(value = "file") MultipartFile file,
@@ -48,7 +52,7 @@ public class UploadResource {
 		Long userId = dataUserJson.getLong("dataUserId");
 		DataUser dataUser = dataUserRepo.findOne(userId);
 		newRoute.setName((String) jsonRoute.get("name"));
-		newRoute.setType(jsonRoute.getInt("type"));
+		newRoute.setType(typeRepository.findOne((long) jsonRoute.getInt("type")));
 		newRoute.setDataUser(dataUser);
 		return Optional.ofNullable(converter.convertExcelToDataClass(file, newRoute))
 				.map(convertedFile -> new ResponseEntity<>(convertedFile, HttpStatus.OK))
