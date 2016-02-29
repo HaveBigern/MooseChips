@@ -50,7 +50,7 @@ public class Route implements Serializable {
     @JoinColumn(name = "data_user_id")
     private DataUser dataUser;
 
-    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "route")
     @JsonIgnore
     private List<DataClass> dataClasses = new ArrayList<>();
 
