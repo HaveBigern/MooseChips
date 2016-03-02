@@ -38,7 +38,7 @@ public class UploadResource {
 
 	@Inject
 	private DataUserRepository dataUserRepo;
-	
+
 	@Inject
 	private TypeRepository typeRepository;
 
@@ -58,4 +58,5 @@ public class UploadResource {
 				.map(convertedFile -> new ResponseEntity<>(convertedFile, HttpStatus.OK))
 				.orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
 	}
+
 }

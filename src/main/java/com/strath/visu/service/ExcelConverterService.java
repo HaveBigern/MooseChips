@@ -51,9 +51,10 @@ public class ExcelConverterService {
 			for(DataClass dataClass : route.getDataClasses()) {
 				route.addChild(dataClass);
 			}
-			routeRepository.save(route);
+			routeRepository.saveAndFlush(route);
 			excelFile.delete();
 			inputStream.close();
+			System.gc();
 			return route;
 			
 		} catch (Exception e) {

@@ -6,14 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 
-import org.hibernate.Session;
-import org.hibernate.StatelessSession;
-import org.hibernate.Transaction;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Service;
 
 import com.strath.visu.domain.DataClass;
@@ -35,33 +28,18 @@ public class AverageDataService {
 	@Inject
 	private DataClassRepository dataClassRepository;
 	
-	@PersistenceContext
-	EntityManager entityManager;
-
-	protected Session getCurrentSession()  {
-	    return entityManager.unwrap(Session.class);
-	}
-	
-	public void createAverageRoutes() {
-		List<Type> types = typeRepository.findAll();
-		for(Type type : types) {
-			if(type.getAverageRoute() != null) {
-				routeRepository.deleteRoute(type.getAverageRoute().getRouteId());
-			}
-			List<Route> routes = routeRepository.getByExperimentType(type.getTypeId());
-			Route averageRoute = createAverageDataClassList(routes);
-			averageRoute.setName(type.getName() + " Average");
-			averageRoute.setType(type);
-			type.setAverageRoute(averageRoute);
-			type.addChild(averageRoute);
-			averageRoute.addChildType(type);
-			typeRepository.save(type);
-		}
+	public Type createAndGetAverageRoutes(Long id) {
+		Type type = typeRepository.findOne(id);
+		List<Route> routes = routeRepository.getByExperimentType(type.getTypeId());
+		Route averageRoute = createAverageDataClassList(routes);
+		averageRoute.setName(type.getName() + " Average");
+		averageRoute.setType(type);
+		type.setAverageRoute(averageRoute);
+		type.addChild(averageRoute);
+		return type;
 	}
 	
 	private Route createAverageDataClassList(List<Route> routes) {
-		Session session = getCurrentSession();
-		Transaction tx = session.beginTransaction();
 		Route avgRoute = new Route();
 		List<List<DataClass>> listOfDataClassLists = new ArrayList<>();
 		for(Route route : routes) {
@@ -149,9 +127,7 @@ public class AverageDataService {
 				avgDataClassList.get(i).setNumberOfClasses(avgDataClassList.get(i).getNumberOfClasses() + 1);
 			}	
 		}
-		int index = 0;
 		for(DataClass dataClass : avgDataClassList) {
-			index++;
 			if(dataClass.getNumberOfClasses() > 0) {
 				dataClass.setBrakingCount(dataClass.getBrakingCount()/dataClass.getNumberOfClasses());
 				dataClass.setCollisionOppDir(dataClass.getCollisionOppDir()/dataClass.getNumberOfClasses());
@@ -183,15 +159,8 @@ public class AverageDataService {
 				dataClass.setVehicleCurvature(dataClass.getVehicleCurvature()/dataClass.getNumberOfClasses());
 				dataClass.setYawRate(dataClass.getYawRate()/dataClass.getNumberOfClasses());
 				avgRoute.addChild(dataClass);
-				session.save(dataClass);
-			    if ( index % 50 == 0 ) {
-			        session.flush();
-			        session.clear();
-			    }
 			}
-		}
-		tx.commit();
-		
+		}		
 		Collections.sort(avgDataClassList, new Comparator<DataClass>() {
 		    @Override
 		    public int compare(DataClass c1, DataClass c2) {

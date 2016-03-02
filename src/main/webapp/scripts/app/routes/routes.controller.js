@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('analyserApp').controller('RouteListController', function ($scope, DataUser, Route, AvgRoute) {
+angular.module('analyserApp').controller('RouteListController', function ($scope, $state, DataUser, Route, AvgRoute, spinnerService, Type) {
     	$scope.dataUsers = [];
     	$scope.controlRoutes = [];
     	$scope.multiSelected = [];
@@ -23,10 +23,13 @@ angular.module('analyserApp').controller('RouteListController', function ($scope
         };
         
         $scope.loadAverageRoutes = function() {
-        	AvgRoute.query(function(result) {
+        	spinnerService.show('averageSpinner');
+        	Type.query(function(result) {
         		$scope.averageRoutes = result;
+        	}).$promise.then(function() {
+        		spinnerService.hide('averageSpinner');
         	});
-        }
+        };
         
         $scope.nextStep = function(type) {
         	$scope.step.select = false;
@@ -36,19 +39,18 @@ angular.module('analyserApp').controller('RouteListController', function ($scope
         		$scope.loadAll();
         	}
         	if(type == "multiple") {
-        		$scope.loadAverageRoutes();
         		$scope.step.single = false;
         		$scope.step.multiple = true;
         	}
         };
         
-        $scope.toggleSelect = function(route) {
-        	if(_.contains($scope.multiSelected, route)) {
-        		$scope.multiSelected = _.without($scope.multiSelected, _.findWhere($scope.multiSelected, route));
-        		route.selected = false;
+        $scope.toggleSelect = function(type) {
+        	if(_.contains($scope.multiSelected, type)) {
+        		$scope.multiSelected = _.without($scope.multiSelected, _.findWhere($scope.multiSelected, type));
+        		type.selected = false;
         	} else {
-        		$scope.multiSelected.push(route);
-        		route.selected = true;
+        		$scope.multiSelected.push(type);
+        		type.selected = true;
         	}
         };
         

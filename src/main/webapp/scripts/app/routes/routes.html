@@ -83,12 +83,19 @@
 					<div class="panel-heading" style="font-size: 20px;">
 						Compare Experiment Type Averages
 					</div>
-					
-					<div ng-repeat="route in averageRoutes">
+					<spinner name="averageSpinner" on-loaded="loadAverageRoutes()">
+						<div class="overlay"></div>
+						<div class="spinner">
+							<div class="double-bounce1"></div>
+							<div class="double-bounce2"></div>
+						</div>
+						<div class="please-wait">Please Wait...</div>
+					</spinner>
+					<div ng-repeat="type in averageRoutes">
 						<div class="row" style="margin:0">
-							<div class="expRow" ng-click="toggleSelect(route)">
-								<span class="expFont">{{route.type.name}}</span>
-								<span class="fa fa-3x fa-check pull-right" ng-class='{"selectedExp":route.selected, "unselectedExp":!route.selected}'></span>
+							<div class="expRow" ng-click="toggleSelect(type)">
+								<span class="expFont">{{type.name}}</span>
+								<span class="fa fa-3x fa-check pull-right" ng-class='{"selectedExp":type.selected, "unselectedExp":!type.selected}'></span>
 							</div>
 						</div>
 					</div>

@@ -22,10 +22,10 @@
     "ngInfiniteScroll": "1.2.0",
     "swagger-ui": "2.1.2",
     "underscore": "~1.8.3",
-    "angular-treasure-overlay-spinner": "~1.1.0",
     "angular-animate": "~1.4.9",
     "ui-select": "angular-ui-select#~0.13.2",
-    "angular-nvd3": "~1.0.5"
+    "angular-nvd3": "~1.0.5",
+    "angular-spinners": "^3.1.2"
   },
   "devDependencies": {
     "angular-mocks": "1.4.5",

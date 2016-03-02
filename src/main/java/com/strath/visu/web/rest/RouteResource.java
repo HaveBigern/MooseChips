@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
@@ -17,11 +18,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.strath.visu.domain.Route;
+import com.strath.visu.domain.Type;
 import com.strath.visu.repository.RouteRepository;
 import com.strath.visu.service.AverageDataService;
+import com.strath.visu.web.rest.dto.RouteDTO;
 
 /**
  * REST controller for managing Route.
@@ -55,35 +59,22 @@ public class RouteResource {
     }
     
     /**
-     * GET  /routes -> Create a new route.
-     */
-    @RequestMapping(value = "/setAverages",
-        method = RequestMethod.GET,
-        produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Route> setAverages() throws URISyntaxException {
-        log.debug("Creating Averages");
-        avgDataService.createAverageRoutes();
-        return ResponseEntity.created(new URI("/setAverages"))
-            .body(null);
-    }
-    
-    /**
      * GET  /averages -> get all the routes.
      */
     @RequestMapping(value = "/routes/averages",
         method = RequestMethod.GET,
         produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Route> getAverageRoutes() {
+    public List<RouteDTO> getAverageRoutes(@RequestParam(value = "id") Long id) {
         log.debug("REST request to get all Routes");
-        List<Route> routes = routeRepository.findAll();
+        Type type = avgDataService.createAndGetAverageRoutes(id);
         List<Route> finalRouteList = new ArrayList<>();
-		for(Route route : routes) {
-        	if(route.getAvgType() != null) {
-        		finalRouteList .add(route);
-        	}
+        if(type.getAverageRoute() != null) {
+        	finalRouteList.add(type.getAverageRoute());
         }
-        
-        return finalRouteList;
+		List<RouteDTO> routeDTOs = finalRouteList.stream()
+                .map(route -> new RouteDTO(route))
+                .collect(Collectors.toList());
+        return routeDTOs;
     }
 
     /**

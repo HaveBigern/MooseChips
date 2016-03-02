@@ -1,15 +1,16 @@
 angular.module('analyserApp').controller('RouteMultiViewController',
-		function($scope, $stateParams, DataClassByRoute) {
+		function($scope, $stateParams, AvgRoute) {
 		
-		$scope.routes = $stateParams.routelist;
+		$scope.types = $stateParams.routelist;
 		$scope.route = {};
 		$scope.data = [];
 		$scope.init = function() {
-			_.each($scope.routes, function(route) {
-				DataClassByRoute.query({routeId : route.routeId}, function(result) {
-					route.dataClasses = result;
+			_.each($scope.types, function(type) {
+				AvgRoute.query({id : type.typeId}, function(result) {
+					console.log(result);
+					type.dataClasses = result[0].dataClasses;
 				}).$promise.then(function() {
-					formatData(route.dataClasses, route.type.name);
+					formatData(type.dataClasses, type.name);
 					if(!_.contains($scope.data, barData)) {
 						$scope.data.push(barData);
 					}
